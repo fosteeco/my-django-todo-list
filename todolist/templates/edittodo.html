@@ -1,0 +1,11 @@
+<h1>Edit todo </h1>
+{% if note %}
+<p>{{ note }} </p>
+{% endif %} 
+<form action="{% url 'edittodo' todo.id %}" method="post">
+{% csrf_token %}
+{{ todoform }}
+<input type="submit" value="Edit todo">
+</form>
+<h2><a href= {% url 'todohome' %}>Go back </a></h2>
+

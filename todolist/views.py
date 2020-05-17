@@ -26,3 +26,16 @@ def createtodo(request):
     else:
         form = todoForm()
         return render(request, 'createtodo.html', {'todoform': form})
+
+def edittodo(request, id):
+    gettodo= todoItem.objects.get(pk=id)
+    #gettodo= todoItem.objects.all()[id]
+    form = todoForm(instance=gettodo)
+    if request.method == 'POST':
+        filled_form = todoForm(request.POST, instance=gettodo)
+        if filled_form.is_valid():
+            filled_form.save()
+            form = filled_form
+            note = 'Order has been updated.'
+            return render(request, 'edittodo.html', {'todo': gettodo, 'todoform':form, 'note':note})
+    return render(request, 'edittodo.html', {'todo': gettodo, 'todoform':form})

@@ -3,8 +3,7 @@
 <p>All todos: </p>
 {% if todoitems %} 
 {% for todo in todoitems %}
-{{ todo.id }}
-{{ todo.description }}
+<p><a href= {% url 'edittodo' todo.id %} >{{ todo.id }} {{ todo.description }} {{ todo.created_at }} Priority= {{ todo.priority }} </a></p>
 {% endfor %}
 {% endif %}
 <form action = 
