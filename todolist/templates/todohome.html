@@ -1,0 +1,10 @@
+<h1>Todo homepage </h1>
+<h2><a href= {% url 'createtodo' %}>Create a todo</a></h2>
+<p>All todos: </p>
+{% if todoitems %} 
+{% for todo in todoitems %}
+{{ todo.id }}
+{{ todo.description }}
+{% endfor %}
+{% endif %}
+<form action = 

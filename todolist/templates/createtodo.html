@@ -1,0 +1,12 @@
+<h1> Create todo page </h1>
+<form action="{% url 'createtodo' %}" method="post">
+{% csrf_token %} 
+{{ todoform }}
+<input type="submit" value="Create todo"> 
+</form>
+
+{% if created_todo_pk %}
+<p> {{ note }} </p>
+{% endif %} 
+
+<h2><a href="{% url 'todohome' %}">Go back</a></h2>
