@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+{% block 'body' %} 
+<div class='container'> 
 <h1> Create todo page </h1>
 <form action="{% url 'createtodo' %}" method="post">
 {% csrf_token %} 
@@ -10,3 +13,6 @@
 {% endif %} 
 
 <h2><a href="{% url 'todohome' %}">Go back</a></h2>
+</div>
+
+{% endblock %} 

@@ -1,3 +1,7 @@
+{% extends 'base.html' %} 
+{% block 'body' %}
+
+<div class= 'container'>
 <h1>Todo homepage </h1>
 <h2><a href= {% url 'createtodo' %}>Create a todo</a></h2>
 <p>All todos: </p>
@@ -6,4 +10,5 @@
 <p><a href= {% url 'edittodo' todo.id %} >{{ todo.id }} {{ todo.description }} {{ todo.created_at }} Priority= {{ todo.priority }} </a></p>
 {% endfor %}
 {% endif %}
-<form action = 
+</div>
+{% endblock %}
