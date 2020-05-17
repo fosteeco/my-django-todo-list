@@ -1,0 +1,9 @@
+td{
+    color: #0645AD;
+}
+
+tr:hover td{
+    color: #0B0080;
+    text-decoration: underline;
+    background-color: #D8D8D8;
+}

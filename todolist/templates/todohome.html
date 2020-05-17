@@ -1,14 +1,31 @@
 {% extends 'base.html' %} 
 {% block 'body' %}
-
+{% load static %} 
+<link rel="stylesheet" type="text/css" href= {% static "mystyle.css" %}>
 <div class= 'container'>
 <h1>Todo homepage </h1>
 <h2><a href= {% url 'createtodo' %}>Create a todo</a></h2>
-<p>All todos: </p>
-{% if todoitems %} 
+<table class='table'>
+<thead class='thead-dark'>
+<tr>
+<th scope="col">#</th>
+<th scope="col">Description</th>
+<th scope="col">Date & Time of Creation</th>
+<th scope="col">Priority</th>
+</tr>
+</thead>
+<tbody>
 {% for todo in todoitems %}
-<p><a href= {% url 'edittodo' todo.id %} >{{ todo.id }} {{ todo.description }} {{ todo.created_at }} Priority= {{ todo.priority }} </a></p>
+<tr onclick="window.location='{% url 'edittodo' todo.id %}';">
+<a href= {% url 'edittodo' todo.id %}>
+<td> {{ todo.id }} </td>
+<td> {{ todo.description }}</td>
+<td> {{ todo.created_at }} </td>
+<td> {{ todo.priority }} </td>
+</tr>
+</a>
 {% endfor %}
-{% endif %}
-</div>
+</tbody>
+</table>
+
 {% endblock %}
