@@ -36,6 +36,6 @@ def edittodo(request, id):
         if filled_form.is_valid():
             filled_form.save()
             form = filled_form
-            note = 'Order has been updated.'
+            note = 'Todo has been updated.'
             return render(request, 'edittodo.html', {'todo': gettodo, 'todoform':form, 'note':note})
     return render(request, 'edittodo.html', {'todo': gettodo, 'todoform':form})
