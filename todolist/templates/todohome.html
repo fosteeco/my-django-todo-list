@@ -5,10 +5,12 @@
 <div class= 'container'>
 <h1>Todo homepage </h1>
 <h2><a href= {% url 'createtodo' %}>Create a todo</a></h2>
+<h2> {{ note }} </h2> 
 <table class='table'>
 <thead class='thead-dark'>
 <tr>
 <th scope="col">#</th>
+<th scope="col">Check</th>
 <th scope="col">Description</th>
 <th scope="col">Date & Time of Creation</th>
 <th scope="col">Priority</th>
@@ -16,16 +18,16 @@
 </thead>
 <tbody>
 {% for todo in todoitems %}
-<tr onclick="window.location='{% url 'edittodo' todo.id %}';">
-<a href= {% url 'edittodo' todo.id %}>
+<!-- <tr onclick="window.location='{% url 'edittodo' todo.id %}';"> -->
+<tr>
 <td> {{ todo.id }} </td>
+<td><a href= {% url 'deletetodo' todo.id %}><button type="button" class="btn btn-danger"> Not Completed</button></td> </a>
 <td> {{ todo.description }}</td>
 <td> {{ todo.created_at }} </td>
 <td> {{ todo.priority }} </td>
-</tr>
-</a>
+<tr>
 {% endfor %}
 </tbody>
 </table>
-
+</div>
 {% endblock %}
