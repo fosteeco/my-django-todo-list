@@ -2,6 +2,8 @@ from django.shortcuts import render
 from .forms import todoForm
 from .models import todoItem
 from django.http import HttpResponse
+from django.urls import reverse_lazy
+from django.views.generic import DeleteView
 
 def home(request):
     return render(request, 'home.html')
@@ -41,9 +43,8 @@ def edittodo(request, id):
             return render(request, 'edittodo.html', {'todo': gettodo, 'todoform':form, 'note':note})
     return render(request, 'edittodo.html', {'todo': gettodo, 'todoform':form})
 
-def deletetodo(request, id):
-    gettodo = todoItem.objects.get(pk=id)
-    gettodo.delete()
-    note = "Todo has been deleted!"
-    return render(request, 'todohome.html')
+class deletetodo(DeleteView):
+    model = todoItem
+    success_url = reverse_lazy('todohome')
+
 

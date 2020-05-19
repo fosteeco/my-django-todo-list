@@ -21,7 +21,14 @@
 <!-- <tr onclick="window.location='{% url 'edittodo' todo.id %}';"> -->
 <tr>
 <td> {{ todo.id }} </td>
-<td><a href= {% url 'deletetodo' todo.id %}><button type="button" class="btn btn-danger"> Not Completed</button></td> </a>
+<td>
+<form action ="{% url 'deletetodo' todo.id %}" method="post" >
+{% csrf_token %}
+<input type="hidden" name="todo_id" value="{{ todo.id }}">
+<button type="submit" class="btn btn-danger">
+</button>
+</form>
+</td>
 <td> {{ todo.description }}</td>
 <td> {{ todo.created_at }} </td>
 <td> {{ todo.priority }} </td>
